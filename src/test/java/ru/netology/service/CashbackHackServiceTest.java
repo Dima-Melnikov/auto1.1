@@ -1,43 +1,101 @@
 package ru.netology.service;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-import static org.testng.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CashbackHackServiceTest {
 
-    @Test
-    public void shouldReturn100IfAmountLowerThan1000() {
-        CashbackHackService service = new CashbackHackService();
-        int amount = 900;
+    CashbackHackService service;
 
-        int actual = service.remain(amount);
-        int expected = 100;
-
-        Assert.assertEquals(actual, expected);
+    {
+        service = new CashbackHackService();
     }
 
     @Test
-    public void shouldReturnIfAmountGreaterThan1000() {
-        CashbackHackService service = new CashbackHackService();
-        int amount = 1100;
+
+    public void shouldReturn500IfAmountIs500() {
+
+        int amount = 500;
 
         int actual = service.remain(amount);
-        int expected = 900;
+        int expected = 500;
 
-        Assert.assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
+
     @Test
-    public void shouldReturn0IfAmount1000() {
-        CashbackHackService service = new CashbackHackService();
+    public void shouldReturn0IfAmountIs1000() {
         int amount = 1000;
 
         int actual = service.remain(amount);
         int expected = 0;
 
-        Assert.assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
+    @Test
+    public void shouldReturn100IfAmountIs1() {
+        int amount = 1;
+
+        int actual = service.remain(amount);
+        int expected = 999;
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldReturn0IfAmountIs2000() {
+        int amount = 2000;
+
+        int actual = service.remain(amount);
+        int expected = 0;
+
+        assertEquals(expected, actual);
+    }
+
+    @org.junit.jupiter.api.Test
+
+    public void shouldReturn500IfAmountIs500_1() {
+
+        int amount = 500;
+
+        int actual = service.remain(amount);
+        int expected = 500;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+
+    @org.junit.jupiter.api.Test
+    public void shouldReturn0IfAmountIs1000_1() {
+        int amount = 1000;
+
+        int actual = service.remain(amount);
+        int expected = 0;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @org.junit.jupiter.api.Test
+    public void shouldReturn999IfAmountIs1_1() {
+        int amount = 1;
+
+        int actual = service.remain(amount);
+        int expected = 999;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @org.junit.jupiter.api.Test
+    public void shouldReturn0IfAmountIs2000_1() {
+        int amount = 2000;
+
+        int actual = service.remain(amount);
+        int expected = 0;
+
+        Assertions.assertEquals(expected, actual);
+    }
 }
